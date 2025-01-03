@@ -48,10 +48,17 @@ class SvgVue {
                 },
 
                 {
-                    loader: 'svgo-loader',
-                    options: {
-                        plugins: extendDefaultPlugins(this._convertSvgoOptions(this.options.svgoSettings))
-                    }
+                  loader: 'svgo-loader',
+                  options: {
+                    plugins: [
+                      {
+                        name: 'preset-default',
+                        params: {
+                          overrides: this._convertSvgoOptions(this.options.svgoSettings)
+                        }
+                      }
+                    ]
+                  }
                 }
             ]
         }
